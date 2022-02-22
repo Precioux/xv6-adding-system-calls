@@ -535,6 +535,6 @@ procdump(void)
 int
 getTicks(void)
 {
-cprintf("test1: %x\n",ticks);
+cprintf("Ticks: %d\n",ticks);
 return 0;
 }
