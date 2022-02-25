@@ -538,3 +538,9 @@ getTicks(void)
 cprintf("Ticks: %d\n",ticks);
 return 0;
 }
+int 
+getProcInfo(void)
+{
+  cprintf("Phase 2 to be\n");
+  return 0;
+}
