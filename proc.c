@@ -88,6 +88,7 @@ allocproc(void)
 found:
   p->state = EMBRYO;
   p->pid = nextpid++;
+  p->ctime = ticks;
 
   release(&ptable.lock);
 
@@ -549,7 +550,8 @@ getProcInfo(void)
   for(p = ptable.proc; p < &ptable.proc[NPROC]; p++)
   {
      if(p->state == RUNNING){
-        cprintf("Process Name: %s   PId: %d   State: %d\n" , p->name, p->pid ,p->state);
+        cprintf("Process Name: %s   PId: %d  Till-Ticks: %d\n" , p->name, p->pid ,ticks-p->ctime);
+  
         count++;
 
      }
