@@ -541,6 +541,21 @@ return 0;
 int 
 getProcInfo(void)
 {
-  cprintf("Phase 2 to be\n");
-  return 0;
+  struct proc *p;
+  int count = 0;
+
+  acquire(&ptable.lock);
+
+  for(p = ptable.proc; p < &ptable.proc[NPROC]; p++)
+  {
+     if(p->state == RUNNING){
+        cprintf("Process Name: %s   PId: %d   State: %d\n" , p->name, p->pid ,p->state);
+        count++;
+
+     }
+  }
+
+  release(&ptable.lock);
+
+ return count;
 }
